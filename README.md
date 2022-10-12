@@ -31,6 +31,7 @@
 ```bash
 $ npm install
 ```
+Create a .env file similar to the .env.example file
 
 ## Running the app
 
@@ -43,6 +44,9 @@ $ npm run start:dev
 
 # production mode
 $ npm run start:prod
+
+# running all app with docker 
+$ docker-compose up
 ```
 
 ## Test
@@ -57,6 +61,12 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
+
+## Note
+
+I only leave the GOOGLE_KEY exposed inside .env.example file in order to test the google maps service in case you do not have any key of this service.
+
+Only e2e tests are running completely, unit tests have bases but the time was not enough for me to create them
 
 ## Support
 

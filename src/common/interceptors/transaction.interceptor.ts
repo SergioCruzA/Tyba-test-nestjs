@@ -22,7 +22,7 @@ export class TransactionInterceptor implements NestInterceptor {
     } = request;
 
     let action;
-    if (path && path.includes('/users/create')) action = 'register';
+    if (path && path.includes('/users')) action = 'register';
     if (path && path.includes('/auth/login')) action = 'login';
     if (path && path.includes('/restaurants')) action = 'getRestaurants';
     if (path && path.includes('/transactions')) action = 'getTransactions';

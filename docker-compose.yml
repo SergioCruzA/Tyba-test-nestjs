@@ -1,0 +1,41 @@
+version: "3"
+services:
+  app:
+    build:
+      context: ./
+    container_name: nest_app
+    restart: unless-stopped
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: nest_db
+      DB_USERNAME: postgres
+      DB_PASSWORD: workdb123
+    volumes:
+      - ./app:/srv/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+    networks:
+      - nest
+
+  postgres:
+    image: postgres:11.9
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: workdb123
+      POSTGRES_DB: nest_db
+    volumes:
+      - ./data:/data/postgres
+    ports:
+      - "5434:5432"
+    networks:
+      - nest
+
+volumes:
+  postgres:
+
+networks:
+  nest:
+    driver: bridge
